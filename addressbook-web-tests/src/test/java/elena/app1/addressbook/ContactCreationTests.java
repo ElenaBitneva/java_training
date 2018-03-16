@@ -12,7 +12,7 @@ public class ContactCreationTests extends TestBase {
         gotoContactPage();
         fillContactForm(new ContactData("Elena", "Bitneva", "Apple Inc.", "1 Infinite Loop Cupertino, CA, US 95014", "781-975-9202"));
         submitContactCreation();
-        returnToContactPage();
+        returnToHomePage();
     }
 
 

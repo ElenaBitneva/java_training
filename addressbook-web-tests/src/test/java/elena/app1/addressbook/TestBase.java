@@ -79,12 +79,12 @@ public class TestBase {
         wd.findElement(By.name("delete")).click();
     }
 
-    protected void selectGroup() {
+    protected void selectListElement() {
         wd.findElement(By.name("selected[]")).click();
     }
 
-    protected void returnToContactPage() {
-        wd.findElement(By.linkText("home page")).click();
+    protected void returnToHomePage() {
+        wd.findElement(By.linkText("home")).click();
     }
 
     protected void submitContactCreation() {
@@ -112,4 +112,13 @@ public class TestBase {
     protected void gotoContactPage() {
         wd.findElement(By.linkText("add new")).click();
     }
+
+    protected void clickOKinPopup() {
+        wd.switchTo().alert().accept();
+    }
+
+    protected void deleteSelectedContacts() {
+        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
 }
