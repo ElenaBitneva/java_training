@@ -1,4 +1,4 @@
-package elena.app1.addressbook;
+package elena.app1.addressbook.model;
 
 public class GroupData {
     private final String name;
