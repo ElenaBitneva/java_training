@@ -7,11 +7,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by elina_000 on 17.03.2018.
  */
-public class ContactHelper {
-    private FirefoxDriver wd;
+public class ContactHelper extends BaseHelper{
+
 
     public ContactHelper(FirefoxDriver wd) {
-        this.wd = wd;
+
+        super(wd);
     }
 
     public void returnToHomePage() {
