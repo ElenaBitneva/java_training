@@ -16,29 +16,29 @@ public class ContactHelper extends BaseHelper{
     }
 
     public void returnToHomePage() {
-        wd.findElement(By.linkText("home")).click();
+        click(By.linkText("home"));
     }
 
     public void submitContactCreation() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        click(By.xpath("//div[@id='content']/form/input[21]"));
+    }
+
+    protected void click(By locator) {
+        wd.findElement(locator).click();
     }
 
     public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(contactData.getCompany());
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
-        wd.findElement(By.name("work")).click();
-        wd.findElement(By.name("work")).clear();
-        wd.findElement(By.name("work")).sendKeys(contactData.getWorkphone());
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("work"), contactData.getWorkphone());
+    }
+
+    protected void type(By locator, String text) {
+        click(locator);
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
     }
 
     public void clickOKinPopup() {
@@ -46,6 +46,6 @@ public class ContactHelper extends BaseHelper{
     }
 
     public void deleteSelectedContacts() {
-        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+        click(By.xpath("//input[@value='Delete']"));
     }
 }
