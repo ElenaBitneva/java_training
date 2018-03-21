@@ -2,6 +2,7 @@ package elena.app1.addressbook.appmanager;
 
 import elena.app1.addressbook.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -10,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ContactHelper extends BaseHelper{
 
 
-    public ContactHelper(FirefoxDriver wd) {
+    public ContactHelper(WebDriver wd) {
 
         super(wd);
     }
