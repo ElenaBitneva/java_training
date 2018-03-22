@@ -57,4 +57,10 @@ public class ContactHelper extends BaseHelper{
     public void submitContactModification() {
         click(By.name("update"));
     }
+
+    public void createContact(ContactData contact) {
+        fillContactForm(contact);
+        submitContactCreation();
+
+    }
 }

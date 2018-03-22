@@ -26,4 +26,11 @@ public class NavigationHelper extends BaseHelper {
     }
     public void gotoToHomePage() {
         click(By.linkText("home"));
-    }}
+    }
+
+    public boolean isThereAnElement() {
+       return isElementPresent(By.name("selected[]"));
+    }
+
+
+}
