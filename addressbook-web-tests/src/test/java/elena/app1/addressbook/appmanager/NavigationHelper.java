@@ -14,6 +14,7 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void gotoGroupPage() {
+
         click(By.linkText("groups"));
     }
 
@@ -24,9 +25,15 @@ public class NavigationHelper extends BaseHelper {
     public void gotoContactPage() {
         click(By.linkText("add new"));
     }
+
     public void gotoToHomePage() {
-        click(By.linkText("home"));
+        if (isElementPresent(By.id("maintable"))){
+            return;
     }
+
+    click(By.linkText("home"));
+}
+
 
     public boolean isThereAnElement() {
        return isElementPresent(By.name("selected[]"));
