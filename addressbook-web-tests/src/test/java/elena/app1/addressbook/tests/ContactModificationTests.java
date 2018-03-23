@@ -11,10 +11,10 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getNavigationHelper().gotoToHomePage();
         if (! app.getNavigationHelper().isThereAnElement()) {
-            app.getNavigationHelper().gotoContactPage();
-            app.getContactHelper().createContact(new ContactData("Elena", "Bitneva", "Apple Inc.",
+              app.getNavigationHelper().gotoContactPage();
+              app.getContactHelper().createContact(new ContactData("Elena", "Bitneva", "Apple Inc.",
                     "1 Infinite Loop Cupertino, CA, US 95014", "781-975-9202"));
-            app.getNavigationHelper().gotoToHomePage();
+              app.getNavigationHelper().gotoToHomePage();
         }
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Elena", "Bitneva", "Apple Inc.", "1 Infinite Loop Cupertino, CA, US 95014", "781-975-9202"));
