@@ -3,7 +3,6 @@ package elena.app1.addressbook.appmanager;
 import elena.app1.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by elina_000 on 17.03.2018.
@@ -49,6 +48,5 @@ public class GroupHelper extends BaseHelper {
         submitGroupCreation();
         returnToGroupPage();
     }
-
 
 }
