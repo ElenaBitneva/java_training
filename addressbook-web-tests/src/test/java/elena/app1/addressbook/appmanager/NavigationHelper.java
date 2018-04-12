@@ -67,7 +67,8 @@ public class NavigationHelper extends BaseHelper {
             List<WebElement> tdElements = element.findElements(By.tagName("td"));
             String firstname = tdElements.get(2).getText();
             String lastname = tdElements.get(1).getText();
-            ContactData contact = new ContactData(firstname, lastname, null, null, null);
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
             contacts.add(contact);
         }
         return contacts;
