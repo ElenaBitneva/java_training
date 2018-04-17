@@ -18,20 +18,17 @@ public class NavigationHelper extends BaseHelper {
         super(wd);
     }
 
-    public void gotoGroupPage() {
+    public void groupPage() {
 
         click(By.linkText("groups"));
     }
 
-    public void selectListElement(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
 
-    public void gotoContactPage() {
+    public void contactPage() {
         click(By.linkText("add new"));
     }
 
-    public void gotoToHomePage() {
+    public void homePage() {
         if (isElementPresent(By.id("maintable"))){
             return;
     }
@@ -48,29 +45,7 @@ public class NavigationHelper extends BaseHelper {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getGroupList() {
-        List<GroupData> groups = new ArrayList<GroupData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        for (WebElement element : elements){
-            String name = element.getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id, name, null, null);
-            groups.add(group);
-        }
-        return groups;
-    }
 
-    public List<ContactData> getContactList() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements){
-            List<WebElement> tdElements = element.findElements(By.tagName("td"));
-            String firstname = tdElements.get(2).getText();
-            String lastname = tdElements.get(1).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
-            contacts.add(contact);
-        }
-        return contacts;
-    }
+
+
 }

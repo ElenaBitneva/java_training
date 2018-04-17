@@ -1,38 +1,42 @@
 package elena.app1.addressbook.tests;
 
 import elena.app1.addressbook.model.ContactData;
-import elena.app1.addressbook.model.GroupData;
-import org.testng.Assert;
+import elena.app1.addressbook.model.Contacts;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by elina_000 on 18.03.2018.
  */
 public class ContactModificationTests extends TestBase {
+    @BeforeMethod
+    public void ensurePreconditions(){
+        app.goTo().homePage();
+        if (app.contact().all().size()==0) {
+            app.goTo().contactPage();
+            app.contact().create(new ContactData().withFirstname("Elena").withLastname("Bitneva"));
+            app.goTo().homePage();
+        }
+
+    }
     @Test
     public void testContactModification() {
-        app.getNavigationHelper().gotoToHomePage();
-        if (! app.getNavigationHelper().isThereAnElement()) {
-              app.getNavigationHelper().gotoContactPage();
-              app.getContactHelper().createContact(new ContactData("Elena", "Bitneva", null, null, null));
-              app.getNavigationHelper().gotoToHomePage();
-        }
-        List<ContactData> before = app.getNavigationHelper().getContactList();
-        app.getContactHelper().initContactModification();
-        ContactData contact = new ContactData(before.get(0).getId(),"Elena", "Bitneva", "Apple Inc.", "1 Infinite Loop Cupertino, CA, US 95014", "781-975-9202");
-        app.getContactHelper().fillContactForm(contact);
-        app.getContactHelper().submitContactModification();
-        app.getNavigationHelper().gotoToHomePage();
-        List<ContactData> after = app.getNavigationHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size());
-        before.remove(0);
-        before.add(contact);
-        Comparator<? super ContactData> byId = (g1, g2)->Integer.compare(g1.getId(), g2.getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before,after);
+        Contacts before = app.contact().all();
+        ContactData modifiedContact = before.iterator().next();
+        ContactData contact = new ContactData().
+                withId(modifiedContact.getId()).withFirstname("Elena").withLastname("Bitneva").
+                withCompany("Apple Inc.").withAddress("1 Infinite Loop Cupertino, CA, US 95014").
+                withWorkphone("781-975-9202");
+        app.contact().modify(contact);
+        app.goTo().homePage();
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size());
+        assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
+
+
 }
