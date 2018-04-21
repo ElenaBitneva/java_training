@@ -28,7 +28,7 @@ public class ContactModificationTests extends TestBase {
         Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData().
-                withId(modifiedContact.getId()).withFirstname("Elena").withLastname("Bitneva").
+                withId(modifiedContact.getId()).withFirstname("Elena12").withLastname("Bitneva").
                 withCompany("Apple Inc.").withAddress("1 Infinite Loop Cupertino, CA, US 95014").
                 withWorkphone("781-975-9202");
         app.contact().modify(contact);
