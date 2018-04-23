@@ -2,15 +2,11 @@ package elena.app1.addressbook.appmanager;
 
 import elena.app1.addressbook.model.ContactData;
 import elena.app1.addressbook.model.Contacts;
-import elena.app1.addressbook.tests.ContactInformationTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Formatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -155,26 +151,24 @@ public class ContactHelper extends BaseHelper {
     public String mergePhones(ContactData contact) {
         return Arrays.asList(contact.getMobilephone(), contact.getHomephone(), contact.getWorkphone())
                 .stream().filter((s) -> !s.equals(""))
-                .map(ContactHelper::cleanedPhones)
+                .map(ContactHelper::cleanedText)
                 .collect(Collectors.joining("\n"));
 
     }
     public String mergeEmails(ContactData contact) {
         return Arrays.asList(contact.getEmail(),contact.getEmail2(),contact.getEmail3())
                 .stream().filter((s) -> !s.equals(""))
-                .map(ContactHelper::cleanedEmails)
+                .map(ContactHelper::cleanedText)
                 .collect(Collectors.joining("\n"));
 
 
     }
 
-    private static String cleanedEmails(String email) {
-        return email.replaceAll("\\s", "").replaceAll("[-()]", "");
+    private static String cleanedText(String text) {
+        return text.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
-    private static String cleanedPhones(String phone) {
-        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-    }
+
     private static String cleanedAddresses(String address) {
         return address.replaceAll("[-()]", "");
 

@@ -1,11 +1,20 @@
 package elena.app1.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
+import java.io.File;
+
 public class ContactData {
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstname;
+    @Expose
     private String lastname;
+    @Expose
     private String company;
+    @Expose
     private String address;
+
     private String address2;
     private String workphone;
     private String mobilephone;
@@ -16,6 +25,7 @@ public class ContactData {
     private String email3;
     private String allEmails;
     private String allAddresses;
+
 
     public String getAllEmails() {
         return allEmails;
