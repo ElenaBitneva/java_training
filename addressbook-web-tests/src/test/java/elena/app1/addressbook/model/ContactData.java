@@ -1,29 +1,66 @@
 package elena.app1.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table (name = "addressbook")
 public class ContactData {
+    @Id
+    @Column (name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column (name = "firstname")
     private String firstname;
     @Expose
+    @Column (name = "lastname")
     private String lastname;
     @Expose
+    @Column (name = "company")
     private String company;
     @Expose
+    @Transient
     private String address;
-
+    @Transient
     private String address2;
+
+    @Column (name = "work")
+    @Type(type = "text")
     private String workphone;
+
+    @Column (name = "mobile")
+    @Type(type = "text")
     private String mobilephone;
+    @Column (name = "home")
+    @Type(type = "text")
     private String homephone;
+    @Transient
     private String allPhones;
+    @Column (name = "email")
+    @Type(type = "text")
     private String email;
+    @Column (name = "email2")
+    @Type(type = "text")
     private String email2;
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
+    @Column (name = "email3")
+    @Type(type = "text")
     private String email3;
+    @Transient
     private String allEmails;
+    @Transient
     private String allAddresses;
 
 
@@ -155,14 +192,6 @@ public class ContactData {
         this.allAddresses = allAddresses;
         return this;
     }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id='" + id + '\'' + "lastname='" + lastname + '\'' + "firstname='" + firstname + '\'' +
-                "company='" + company + '\'' + "address='" + address + '\'' +
-                "workphone='" + workphone + '\'' + "email='" + email + '\'' ;}
-
 
 
     @Override
