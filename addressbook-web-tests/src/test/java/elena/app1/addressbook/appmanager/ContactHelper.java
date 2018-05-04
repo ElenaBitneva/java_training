@@ -2,13 +2,18 @@ package elena.app1.addressbook.appmanager;
 
 import elena.app1.addressbook.model.ContactData;
 import elena.app1.addressbook.model.Contacts;
+import elena.app1.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.openqa.selenium.By.cssSelector;
+
 
 /**
  * Created by elina_000 on 17.03.2018.
@@ -98,11 +103,11 @@ public class ContactHelper extends BaseHelper {
         click(By.linkText("home"));
     }
     public void initContactModificationById(int id) {
-        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
+        wd.findElement(cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
     }
 
-    private void selectContactById(int id) {
-        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    public void selectContactById(int id) {
+        wd.findElement(cssSelector("input[value='" + id + "']")).click();
     }
 
 
@@ -174,6 +179,16 @@ public class ContactHelper extends BaseHelper {
 
     private static String cleanedAddresses(String address) {
         return address.replaceAll("[-()]", "");
+
+    }
+    public void selectGroup(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+
+
+    }
+
+    public void addToGroup() {
+        click(By.name("add"));
 
     }
 }
