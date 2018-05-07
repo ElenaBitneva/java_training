@@ -196,7 +196,6 @@ public class ContactHelper extends BaseHelper {
 
     }
     public void removeFromGroup(GroupData group){
-        click(By.xpath("//input[@value='Remove from']"));
-
+        click(By.xpath("//input[@name='remove']"));
     }
 }
