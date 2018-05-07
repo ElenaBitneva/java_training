@@ -184,11 +184,19 @@ public class ContactHelper extends BaseHelper {
     public void selectGroup(GroupData group) {
         new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
 
-
     }
+
 
     public void addToGroup() {
         click(By.name("add"));
+
+    }
+    public void selectFromGroup(GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
+
+    }
+    public void removeFromGroup(GroupData group){
+        click(By.xpath("//input[@value='Remove from']"));
 
     }
 }
