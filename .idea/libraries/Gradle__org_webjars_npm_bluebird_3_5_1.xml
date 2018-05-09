@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars.npm:bluebird:3.5.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/bluebird/3.5.1/846d3dd20a32aa22e81ef86a72a1c3d29858ee56/bluebird-3.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/bluebird/3.5.1/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/bluebird-3.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
